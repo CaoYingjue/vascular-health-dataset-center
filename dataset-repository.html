@@ -4,69 +4,158 @@
 <meta charset="UTF-8">
 <title>Dataset Repository</title>
 <link rel="stylesheet" href="css/style.css">
+
+<!-- ⭐ Accordion 样式（统一你前面的系统） -->
+<style>
+.accordion-btn {
+    width: 100%;
+    background: none;
+    border: none;
+    text-align: left;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 0;
+    cursor: pointer;
+}
+
+.panel {
+    display: none;
+    padding-left: 15px;
+    margin-bottom: 10px;
+}
+
+.panel ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 5px 0;
+}
+
+.panel li {
+    padding: 4px 0;
+}
+
+.panel a {
+    text-decoration: none;
+}
+
+.panel.active {
+    display: block;
+}
+</style>
+
 </head>
 
 <body>
 
 <h1>Dataset Repository</h1>
 
-<ul>
+<div class="container">
 
-<li>
-<a href="datasets/carotid.html">
-VascularHealth-Carotid
-</a>
-</li>
+<div class="sidebar">
 
-<li>
-<a href="datasets/aorta.html">
-VascularHealth-Aorta
-</a>
-</li>
+<!-- 1 -->
+<button class="accordion-btn">1 ▾</button>
+<div class="panel">
+    <ul>
+        <li><a href="datasets/carotid.html">1</a></li>
+    </ul>
+</div>
 
-<li>
-<a href="datasets/pad.html">
-VascularHealth-PAD
-</a>
-</li>
+<!-- 2 -->
+<button class="accordion-btn">2 ▾</button>
+<div class="panel">
+    <ul>
+        <li><a href="datasets/aorta.html">2</a></li>
+    </ul>
+</div>
 
-<li>
-<a href="datasets/vein.html">
-VascularHealth-Vein
-</a>
-</li>
+<!-- 3 -->
+<button class="accordion-btn">3 ▾</button>
+<div class="panel">
+    <ul>
+        <li><a href="datasets/pad.html">3</a></li>
+    </ul>
+</div>
 
-<li>
-<a href="datasets/vte.html">
-VascularHealth-VTE
-</a>
-</li>
+<!-- 4 -->
+<button class="accordion-btn">4 ▾</button>
+<div class="panel">
+    <ul>
+        <li><a href="datasets/vein.html">4</a></li>
+    </ul>
+</div>
 
-<li>
-<a href="datasets/hemodynamics.html">
-VascularHealth-Hemodynamics
-</a>
-</li>
+<!-- 5 -->
+<button class="accordion-btn">5 ▾</button>
+<div class="panel">
+    <ul>
+        <li><a href="datasets/vte.html">5</a></li>
+    </ul>
+</div>
 
-<li>
-<a href="datasets/robotics.html">
-VascularHealth-AI-Robotics
-</a>
-</li>
+<!-- 6 -->
+<button class="accordion-btn">6 ▾</button>
+<div class="panel">
+    <ul>
+        <li><a href="datasets/hemodynamics.html">6</a></li>
+    </ul>
+</div>
 
-<li>
-<a href="datasets/rehab.html">
-VascularHealth-Rehab
-</a>
-</li>
+<!-- 7 -->
+<button class="accordion-btn">7 ▾</button>
+<div class="panel">
+    <ul>
+        <li><a href="datasets/robotics.html">7</a></li>
+    </ul>
+</div>
 
-<li>
-<a href="datasets/biobank.html">
-VascularHealth-BioBank
-</a>
-</li>
+<!-- 8 -->
+<button class="accordion-btn">8 ▾</button>
+<div class="panel">
+    <ul>
+        <li><a href="datasets/rehab.html">8</a></li>
+    </ul>
+</div>
 
-</ul>
+<!-- 9 -->
+<button class="accordion-btn">9 ▾</button>
+<div class="panel">
+    <ul>
+        <li><a href="datasets/biobank.html">9</a></li>
+    </ul>
+</div>
+
+</div>
+
+<!-- 内容区 -->
+<div class="content">
+    <p>Select a dataset from the repository.</p>
+</div>
+
+</div>
+
+<!-- ⭐ JS（完全统一你 data-paper 版本） -->
+<script>
+const buttons = document.querySelectorAll(".accordion-btn");
+
+buttons.forEach(btn => {
+    btn.addEventListener("click", function () {
+
+        const panel = this.nextElementSibling;
+        const isOpen = panel.classList.contains("active");
+
+        // 关闭全部
+        document.querySelectorAll(".panel").forEach(p => {
+            p.classList.remove("active");
+        });
+
+        // 打开当前
+        if (!isOpen) {
+            panel.classList.add("active");
+        }
+    });
+});
+</script>
 
 </body>
 </html>
