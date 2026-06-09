@@ -4,40 +4,130 @@
 <meta charset="UTF-8">
 <title>AI Benchmarks</title>
 <link rel="stylesheet" href="css/style.css">
+
+<!-- ⭐ Accordion 样式（统一 Dataset Repository 风格） -->
+<style>
+.accordion-btn {
+    width: 100%;
+    background: none;
+    border: none;
+    text-align: left;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 0;
+    cursor: pointer;
+}
+
+.panel {
+    display: none;
+    padding-left: 15px;
+    margin-bottom: 10px;
+}
+
+.panel ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 5px 0;
+}
+
+.panel li {
+    padding: 4px 0;
+}
+
+.panel a {
+    text-decoration: none;
+}
+
+.panel.active {
+    display: block;
+}
+
+/* ⭐ 页面布局（和 Dataset Repository 保持一致） */
+.container {
+    display: flex;
+    gap: 30px;
+}
+
+.sidebar {
+    width: 260px;
+}
+
+.content {
+    flex: 1;
+}
+</style>
+
 </head>
 
 <body>
 
 <h1>AI Benchmarks</h1>
 
-<h2>Purpose</h2>
+<div class="container">
 
-<p>
-Benchmark datasets and standardized evaluation
-protocols for vascular AI research.
-</p>
+<!-- ⭐ 左侧 Accordion -->
+<div class="sidebar">
 
-<h2>Tasks</h2>
+<!-- Purpose -->
+<button class="accordion-btn">Purpose ▾</button>
+<div class="panel">
+    <p>
+        Benchmark datasets and standardized evaluation protocols for vascular AI research.
+    </p>
+</div>
 
-<ul>
+<!-- Tasks -->
+<button class="accordion-btn">Tasks ▾</button>
+<div class="panel">
+    <ul>
+        <li>Image Segmentation</li>
+        <li>Disease Classification</li>
+        <li>Risk Prediction</li>
+        <li>Outcome Prediction</li>
+        <li>Surgical Planning</li>
+    </ul>
+</div>
 
-<li>Image Segmentation</li>
+<!-- Leaderboards -->
+<button class="accordion-btn">Leaderboards ▾</button>
+<div class="panel">
+    <p>Coming Soon</p>
+</div>
 
-<li>Disease Classification</li>
+</div>
 
-<li>Risk Prediction</li>
+<!-- ⭐ 右侧内容区 -->
+<div class="content">
+    <h2>Welcome to AI Benchmarks</h2>
+    <p>
+        Select a section from the left panel to view details about benchmarking tasks and evaluation protocols.
+    </p>
+</div>
 
-<li>Outcome Prediction</li>
+</div>
 
-<li>Surgical Planning</li>
+<!-- ⭐ JS（统一版本） -->
+<script>
+const buttons = document.querySelectorAll(".accordion-btn");
 
-</ul>
+buttons.forEach(btn => {
+    btn.addEventListener("click", function () {
 
-<h2>Leaderboards</h2>
+        const panel = this.nextElementSibling;
+        const isOpen = panel.classList.contains("active");
 
-<p>
-Coming Soon
-</p>
+        // 关闭全部
+        document.querySelectorAll(".panel").forEach(p => {
+            p.classList.remove("active");
+        });
+
+        // 打开当前
+        if (!isOpen) {
+            panel.classList.add("active");
+        }
+    });
+});
+</script>
 
 </body>
 </html>
