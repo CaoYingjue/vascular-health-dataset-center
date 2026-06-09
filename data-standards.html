@@ -4,37 +4,166 @@
 <meta charset="UTF-8">
 <title>Data Standards</title>
 <link rel="stylesheet" href="css/style.css">
+
+<style>
+.accordion-btn {
+    width: 100%;
+    background: none;
+    border: none;
+    text-align: left;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 0;
+    cursor: pointer;
+}
+
+.panel {
+    display: none;
+    padding-left: 15px;
+    margin-bottom: 10px;
+}
+
+.panel ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 5px 0;
+}
+
+.panel li {
+    padding: 4px 0;
+}
+
+.panel a {
+    text-decoration: none;
+}
+
+.panel.active {
+    display: block;
+}
+
+.container {
+    display: flex;
+    gap: 30px;
+}
+
+.sidebar {
+    width: 260px;
+}
+
+.content {
+    flex: 1;
+}
+</style>
+
 </head>
 
 <body>
 
 <h1>Data Standards</h1>
 
-<h2>Objective</h2>
+<div class="container">
 
-<p>
-Provide standardized protocols for
-data acquisition,
-annotation,
-sharing,
-and AI development.
-</p>
+<!-- 左侧 Accordion -->
+<div class="sidebar">
 
-<h2>Standards</h2>
+<!-- Purpose -->
+<button class="accordion-btn">Purpose ▾</button>
+<div class="panel">
+    <p>
+        Promote standardized, interoperable, and reusable vascular health datasets for research, clinical applications, and artificial intelligence development.
+    </p>
+</div>
 
-<ul>
+<!-- Metadata Standards -->
+<button class="accordion-btn">Metadata Standards ▾</button>
+<div class="panel">
+    <ul>
+        <li>Dataset Title</li>
+        <li>Authors and Affiliations</li>
+        <li>Version Information</li>
+        <li>Keywords</li>
+        <li>Persistent Identifiers (DOI)</li>
+    </ul>
+</div>
 
-<li>Imaging Standards</li>
+<!-- Data Quality -->
+<button class="accordion-btn">Data Quality ▾</button>
+<div class="panel">
+    <ul>
+        <li>Data Completeness</li>
+        <li>Annotation Consistency</li>
+        <li>Validation Procedures</li>
+        <li>Error Checking</li>
+        <li>Quality Control Documentation</li>
+    </ul>
+</div>
 
-<li>Clinical Data Standards</li>
+<!-- AI Readiness -->
+<button class="accordion-btn">AI Readiness ▾</button>
+<div class="panel">
+    <ul>
+        <li>Structured Labels</li>
+        <li>Machine-readable Formats</li>
+        <li>Training / Validation Splits</li>
+        <li>Benchmark Compatibility</li>
+        <li>Reproducibility Documentation</li>
+    </ul>
+</div>
 
-<li>Annotation Standards</li>
+<!-- FAIR Principles -->
+<button class="accordion-btn">FAIR Principles ▾</button>
+<div class="panel">
+    <ul>
+        <li>Findable</li>
+        <li>Accessible</li>
+        <li>Interoperable</li>
+        <li>Reusable</li>
+    </ul>
+</div>
 
-<li>AI Evaluation Standards</li>
+<!-- Guidelines -->
+<button class="accordion-btn">Guidelines ▾</button>
+<div class="panel">
+    <p>
+        Detailed submission and formatting guidelines will be released in future updates.
+    </p>
+</div>
 
-<li>Data Sharing Policies</li>
+</div>
 
-</ul>
+<!-- 右侧内容区 -->
+<div class="content">
+    <h2>Welcome to Data Standards</h2>
+
+    <p>
+        This section provides guidance for the development, documentation,
+        sharing, and reuse of vascular datasets. The standards aim to improve
+        data quality, interoperability, reproducibility, and AI readiness
+        across vascular research and digital health applications.
+    </p>
+</div>
+
+</div>
+
+<script>
+const buttons = document.querySelectorAll(".accordion-btn");
+
+buttons.forEach(btn => {
+    btn.addEventListener("click", function () {
+
+        const panel = this.nextElementSibling;
+        const isOpen = panel.classList.contains("active");
+
+        document.querySelectorAll(".panel").forEach(p => {
+            p.classList.remove("active");
+        });
+
+        if (!isOpen) {
+            panel.classList.add("active");
+        }
+    });
+});
+</script>
 
 </body>
 </html>
