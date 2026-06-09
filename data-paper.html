@@ -5,7 +5,7 @@
 <title>Data Papers</title>
 <link rel="stylesheet" href="css/style.css">
 
-<!-- ⭐ 新增：折叠样式 -->
+<!-- ⭐ 折叠样式 -->
 <style>
 .accordion-btn {
     width: 100%;
@@ -21,11 +21,13 @@
 .panel {
     display: none;
     padding-left: 15px;
+    margin-bottom: 10px;
 }
 
 .panel ul {
     list-style: none;
     padding-left: 0;
+    margin: 5px 0;
 }
 
 .panel li {
@@ -34,6 +36,11 @@
 
 .panel a {
     text-decoration: none;
+}
+
+/* ⭐ 当前展开状态 */
+.panel.active {
+    display: block;
 }
 </style>
 
@@ -46,15 +53,13 @@
     <a href="index.html">Home</a>
 </div>
 
-<!-- 主容器 -->
 <div class="container">
 
-    <!-- 左侧导航（✔ 已修改为可折叠） -->
+    <!-- 左侧栏 -->
     <div class="sidebar">
 
         <h2>Data Papers</h2>
 
-        <!-- 分类1 -->
         <button class="accordion-btn">Browse by Category ▾</button>
         <div class="panel">
             <ul>
@@ -65,7 +70,6 @@
             </ul>
         </div>
 
-        <!-- 分类2 -->
         <button class="accordion-btn">Disease-Specific Datasets ▾</button>
         <div class="panel">
             <ul>
@@ -77,7 +81,6 @@
             </ul>
         </div>
 
-        <!-- 分类3 -->
         <button class="accordion-btn">Clinical Cohorts ▾</button>
         <div class="panel">
             <ul>
@@ -86,7 +89,6 @@
             </ul>
         </div>
 
-        <!-- 分类4 -->
         <button class="accordion-btn">AI & Computational ▾</button>
         <div class="panel">
             <ul>
@@ -97,7 +99,6 @@
             </ul>
         </div>
 
-        <!-- 分类5 -->
         <button class="accordion-btn">Multi-Omics ▾</button>
         <div class="panel">
             <ul>
@@ -107,7 +108,6 @@
             </ul>
         </div>
 
-        <!-- 分类6 -->
         <button class="accordion-btn">Navigation ▾</button>
         <div class="panel">
             <ul>
@@ -120,7 +120,7 @@
 
     </div>
 
-    <!-- 右侧内容（不变） -->
+    <!-- 右侧内容 -->
     <div class="content">
 
         <h1>Data Papers</h1>
@@ -154,18 +154,24 @@
 
 </div>
 
-<!-- ⭐ 新增：点击展开 JS -->
+<!-- ⭐ 稳定 JS（只控制展开/收起 + 自动关闭其他） -->
 <script>
 const buttons = document.querySelectorAll(".accordion-btn");
 
 buttons.forEach(btn => {
     btn.addEventListener("click", function () {
-        const panel = this.nextElementSibling;
 
-        if (panel.style.display === "block") {
-            panel.style.display = "none";
-        } else {
-            panel.style.display = "block";
+        const panel = this.nextElementSibling;
+        const isOpen = panel.classList.contains("active");
+
+        // 先关闭所有
+        document.querySelectorAll(".panel").forEach(p => {
+            p.classList.remove("active");
+        });
+
+        // 如果原来是关闭 → 打开它
+        if (!isOpen) {
+            panel.classList.add("active");
         }
     });
 });
