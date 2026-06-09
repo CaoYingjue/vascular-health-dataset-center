@@ -4,6 +4,39 @@
 <meta charset="UTF-8">
 <title>Data Papers</title>
 <link rel="stylesheet" href="css/style.css">
+
+<!-- ⭐ 新增：折叠样式 -->
+<style>
+.accordion-btn {
+    width: 100%;
+    background: none;
+    border: none;
+    text-align: left;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 0;
+    cursor: pointer;
+}
+
+.panel {
+    display: none;
+    padding-left: 15px;
+}
+
+.panel ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.panel li {
+    padding: 4px 0;
+}
+
+.panel a {
+    text-decoration: none;
+}
+</style>
+
 </head>
 
 <body>
@@ -16,66 +49,78 @@
 <!-- 主容器 -->
 <div class="container">
 
-    <!-- 左侧导航 -->
+    <!-- 左侧导航（✔ 已修改为可折叠） -->
     <div class="sidebar">
 
         <h2>Data Papers</h2>
 
-        <h3>Browse by Category</h3>
+        <!-- 分类1 -->
+        <button class="accordion-btn">Browse by Category ▾</button>
+        <div class="panel">
+            <ul>
+                <li><a href="#">CTA</a></li>
+                <li><a href="#">MRA</a></li>
+                <li><a href="#">Ultrasound</a></li>
+                <li><a href="#">DSA</a></li>
+            </ul>
+        </div>
 
-        <ul>
-            <li><a href="#">CTA</a></li>
-            <li><a href="#">MRA</a></li>
-            <li><a href="#">Ultrasound</a></li>
-            <li><a href="#">DSA</a></li>
-        </ul>
+        <!-- 分类2 -->
+        <button class="accordion-btn">Disease-Specific Datasets ▾</button>
+        <div class="panel">
+            <ul>
+                <li><a href="#">Carotid Disease</a></li>
+                <li><a href="#">Aortic Disease</a></li>
+                <li><a href="#">Peripheral Artery Disease</a></li>
+                <li><a href="#">Venous Disease</a></li>
+                <li><a href="#">VTE</a></li>
+            </ul>
+        </div>
 
-        <h3>Disease-Specific Datasets</h3>
+        <!-- 分类3 -->
+        <button class="accordion-btn">Clinical Cohorts ▾</button>
+        <div class="panel">
+            <ul>
+                <li><a href="#">Registry</a></li>
+                <li><a href="#">Follow-up Studies</a></li>
+            </ul>
+        </div>
 
-        <ul>
-            <li><a href="#">Carotid Disease</a></li>
-            <li><a href="#">Aortic Disease</a></li>
-            <li><a href="#">Peripheral Artery Disease</a></li>
-            <li><a href="#">Venous Disease</a></li>
-            <li><a href="#">VTE</a></li>
-        </ul>
+        <!-- 分类4 -->
+        <button class="accordion-btn">AI & Computational ▾</button>
+        <div class="panel">
+            <ul>
+                <li><a href="#">Hemodynamics</a></li>
+                <li><a href="#">CFD</a></li>
+                <li><a href="#">Digital Twin</a></li>
+                <li><a href="#">Surgical Robotics</a></li>
+            </ul>
+        </div>
 
-        <h3>Clinical Cohorts</h3>
+        <!-- 分类5 -->
+        <button class="accordion-btn">Multi-Omics ▾</button>
+        <div class="panel">
+            <ul>
+                <li><a href="#">Genomics</a></li>
+                <li><a href="#">Transcriptomics</a></li>
+                <li><a href="#">Proteomics</a></li>
+            </ul>
+        </div>
 
-        <ul>
-            <li><a href="#">Registry</a></li>
-            <li><a href="#">Follow-up Studies</a></li>
-        </ul>
-
-        <h3>AI & Computational</h3>
-
-        <ul>
-            <li><a href="#">Hemodynamics</a></li>
-            <li><a href="#">CFD</a></li>
-            <li><a href="#">Digital Twin</a></li>
-            <li><a href="#">Surgical Robotics</a></li>
-        </ul>
-
-        <h3>Multi-Omics</h3>
-
-        <ul>
-            <li><a href="#">Genomics</a></li>
-            <li><a href="#">Transcriptomics</a></li>
-            <li><a href="#">Proteomics</a></li>
-        </ul>
-
-        <h3>Navigation</h3>
-
-        <ul>
-            <li><a href="#">Featured Data Papers</a></li>
-            <li><a href="#">Most Downloaded</a></li>
-            <li><a href="#">Most Cited</a></li>
-            <li><a href="#">Submit a Data Paper</a></li>
-        </ul>
+        <!-- 分类6 -->
+        <button class="accordion-btn">Navigation ▾</button>
+        <div class="panel">
+            <ul>
+                <li><a href="#">Featured Data Papers</a></li>
+                <li><a href="#">Most Downloaded</a></li>
+                <li><a href="#">Most Cited</a></li>
+                <li><a href="#">Submit a Data Paper</a></li>
+            </ul>
+        </div>
 
     </div>
 
-    <!-- 右侧内容 -->
+    <!-- 右侧内容（不变） -->
     <div class="content">
 
         <h1>Data Papers</h1>
@@ -108,6 +153,23 @@
     </div>
 
 </div>
+
+<!-- ⭐ 新增：点击展开 JS -->
+<script>
+const buttons = document.querySelectorAll(".accordion-btn");
+
+buttons.forEach(btn => {
+    btn.addEventListener("click", function () {
+        const panel = this.nextElementSibling;
+
+        if (panel.style.display === "block") {
+            panel.style.display = "none";
+        } else {
+            panel.style.display = "block";
+        }
+    });
+});
+</script>
 
 </body>
 </html>
